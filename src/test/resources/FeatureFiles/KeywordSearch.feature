@@ -1,8 +1,8 @@
 @KeywordSearch
 Feature: Check Keyword Search In Patseer Explorer.
-
+@KeywordSearch
 Scenario: Check If after entering keyword in search area auto suggestions are displayed and user is able to select from the displayed list.
-Given login
+Given user is logged in.
 Given user is on homepage.
 When user enter "jet " and auto suggestions are dispayed based on the input keyword.
 When user clicks on the appeared auto suggestion

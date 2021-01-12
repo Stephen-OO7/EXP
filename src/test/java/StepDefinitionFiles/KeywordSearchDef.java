@@ -46,7 +46,7 @@ public class KeywordSearchDef extends Base{
 		
 	}
 
-	@Given("login")
+	@Given("user is logged in.")
 	public void login() {
 		super.login();
 	}
@@ -55,7 +55,7 @@ public class KeywordSearchDef extends Base{
 	public void user_is_on_homepagee() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ks.homePageIcon));
 		js.executeScript("arguments[0].click();", Driver().findElement(ks.homePageIcon));
- 
+		
 	}
 
 	@When("user enter {string} and auto suggestions are dispayed based on the input keyword.")
@@ -94,8 +94,8 @@ public class KeywordSearchDef extends Base{
 		{
 			ks.enterKeywordInKeywordSearch(l.get(i));
 			ks.clickOnSearchButtonInKeywordSearch();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(srp.resultsPageRecordCount));
-			if(Driver().findElement(srp.resultsPageRecordCount).isDisplayed())
+			wait.until(ExpectedConditions.visibilityOfElementLocated(srp.RecordCountSearchResultPage));
+			if(Driver().findElement(srp.RecordCountSearchResultPage).isDisplayed())
 			{}
 			else
 			{

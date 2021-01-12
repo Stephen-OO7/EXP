@@ -12,7 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 
 		features="E:\\Automation_softwares _and_jar_files\\eclipsee\\PatseerExplorer\\src\\test\\resources\\FeatureFiles",
 		glue="StepDefinitionFiles",
-		tags="@KeywordSearch",
+		tags= {"@Login or @Quicksearch and @Clases"},
 		plugin = {"pretty", // to generate reports
 				"html:target/html/",
 				"json:target/json/file.json",

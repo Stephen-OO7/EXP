@@ -7,7 +7,8 @@ public class SearchResultsPageObjects {
 	
 	WebDriver driver;
 	
-	public final By resultsPageRecordCount=By.xpath("//span[@class='pgNav font-weight-bold ng-binding']");
+	public final By RecordCountSearchResultPage=By.xpath("//span[@class='pgNav font-weight-bold ng-binding']");
+	public final By smartSearchSearchResultsPage=By.xpath("//input[@id='txtSmartSearchResultQueryAuto-tokenfield']");
 	
 	
 	public SearchResultsPageObjects(WebDriver driver1)
