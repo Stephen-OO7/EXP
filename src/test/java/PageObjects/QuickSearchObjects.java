@@ -13,6 +13,7 @@ import Utilities.Base;
 public class QuickSearchObjects extends Base{
 
 	WebDriver driver;
+	
 	Actions act=new Actions(Driver());
 	WebDriverWait wait=new WebDriverWait(Driver(),60);
 	

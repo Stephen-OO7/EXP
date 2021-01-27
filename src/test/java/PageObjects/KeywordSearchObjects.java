@@ -15,12 +15,16 @@ public class KeywordSearchObjects {
 	WebDriver driver;
 	
 	//Data Members Declaration
-	public final By KeywordSearchForm=By.xpath("//a[@class='nav-link srch-keys srch-lnk srch-keyword active']");
+	public final By KeywordSearchForm=By.xpath("//li/a[contains(text(),'Keyword Search')]");
+	
 	public final By KeywordSearchTextbox=By.xpath("//input[@id='txtSmartSearchQueryAuto-tokenfield']");
 	public final By KeywordSearchSearchButton=By.xpath("//button[@id='divAddButton']");
 	public final By AutosuggestionsInKeywordSearch=By.xpath("//ul[@id='ui-id-1']/li");
 	public final By homePageIcon=By.xpath("//img[@alt='PatSeer']");
-	public final By closeKeyword=By.xpath("//a[contains(@class,'close close1')]");
+	public final By closeKeyword=By.xpath("//a[@class='close close1 ']");
+	
+	
+	
 	
 	//WebDriver Initialization
 	public KeywordSearchObjects(WebDriver driver1)

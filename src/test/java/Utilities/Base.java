@@ -18,7 +18,7 @@ public class Base {
 	
 	
 
-	public WebDriver Driver()
+	public static WebDriver Driver()
 	{
 		
 		DesiredCapabilities dc =DesiredCapabilities.chrome();
@@ -42,12 +42,13 @@ public class Base {
 	}
 	
 
-	public void login()
+	public static void login() throws InterruptedException
 	{
 		Driver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		Driver().manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		try{
 	    String url=System.getProperty("url");
+	    
 	    if(url==null)
 	    {
 	    	url="https://test1-explr.patseer.com";
@@ -57,14 +58,17 @@ public class Base {
 		{}
 		
 		Driver().manage().window().maximize();
-		
+		do {
+		Driver().findElement(By.xpath("//input[@id='userName']")).clear();
 		Driver().findElement(By.xpath("//input[@id='userName']")).sendKeys("stephen");
 		Driver().findElement(By.xpath("//button[@id='login-button']")).click();
+		Thread.sleep(1500);
+		}while(!Driver().getCurrentUrl().contains("test1-explr.patseer.com/search"));
 
 
 	}
 
-	public static void main(String args[])
+	public static void main(String args[]) throws InterruptedException
 	{
 		Base b=new Base();
 		b.login();

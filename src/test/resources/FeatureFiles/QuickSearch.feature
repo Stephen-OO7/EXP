@@ -101,6 +101,13 @@ Then user clicks on search button.
 Then user navigates to the results page having results based on the given input.
 
 @Quicksearch @Parties
+Scenario:Check searching with Current & Orig & Norm Assignees (CAAN)
+When user selects Current & Orig & Norm Assignees CAAN field from dropdown and enters "Google " in the textbox.
+Then user clicks on search button.
+Then user navigates to the results page having results based on the given input.
+
+
+@Quicksearch @Parties
 Scenario:Check searching with Attorny Field
 When user selects Attorny field from dropdown and enters "GUREY STEPHEN M " in the textbox.
 Then user clicks on search button.
@@ -166,6 +173,19 @@ When user selects IPC field from dropdown and enters "F02*" in the textbox.
 Then user clicks on search button.
 Then user navigates to the results page having results based on the given input.
 
+@Quicksearch @Clases
+Scenario:Check searching with FI classification class
+When user selects FI classification field from dropdown and enters "A01*" in the textbox.
+Then user clicks on search button.
+Then user navigates to the results page having results based on the given input.
+
+@Quicksearch @Clases
+Scenario:Check searching with FTERM classification class
+When user selects FTERM classification field from dropdown and enters "4J0*" in the textbox.
+Then user clicks on search button.
+Then user navigates to the results page having results based on the given input.
+
+
 @Quicksearch @Operators
 Scenario:Check searching with OR and AND operators and with all three search fields
 When user selects title and abstract field from dropdown and enters "Magnetic" in the textbox.
@@ -183,6 +203,18 @@ Then user selects NOT operator from the second operators dropdown.
 Then user selects PBD in the third dropdown and enters dates in the PBD fields from "1996-10-10" to "2011-10-10".
 Then user clicks on search button.
 Then user navigates to the results page having results based on the given input.
+
+@Quicksearch @Operators
+Scenario:Check searching with TAC in third field and claims in second field.
+When user selects TAC field in third dropdown and enters "Plasma".
+Then user selects AND from the second operators dropdown.
+Then user selects claims field from the second dropdown and enters claims as "METHOD".
+Then user clicks on search button.
+Then user navigates to the results page having results based on the given input.
+
+
+
+
 
 
 
