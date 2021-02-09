@@ -29,7 +29,7 @@ public class Base {
 
 		ChromeOptions co=new ChromeOptions();
 		co.merge(dc);
-		System.setProperty("webdriver.chrome.driver","E:\\Automation_softwares _and_jar_files\\chromedriver_win32 (1)\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver","E:\\Automation_softwares _and_jar_files\\chromedriver_win32 (1)\\chromedriver.exe");
 
 		if(driver == null)
 		{
