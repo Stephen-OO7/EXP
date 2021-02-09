@@ -23,7 +23,7 @@ import io.cucumber.java.en.When;
 public class SearchResultsPageStepDefs extends Base{
 
 
-	//private static final Logger log = LogManager.getLogger(KeywordSearchDef.class);
+	private static final Logger log = LogManager.getLogger(SearchResultsPageStepDefs.class);
 	Scenario scn;
 	Date dt=new Date();
 	QuickSearchObjects qso=new QuickSearchObjects(Driver());

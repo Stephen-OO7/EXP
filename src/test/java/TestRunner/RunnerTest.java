@@ -16,18 +16,21 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-		features="E:\\Automation_softwares _and_jar_files\\eclipsee\\PatseerExplorer\\src\\test\\resources\\FeatureFiles",
+		//features="E:\\Automation_softwares _and_jar_files\\eclipsee\\PatseerExplorer\\src\\test\\resources\\FeatureFiles",
+		features="classpath:FeatureFiles",
 		glue="StepDefinitionFiles",
-		tags= "@Login or @Searchresultspage and  @filterss ",
+		tags= "@Login ",			
 		plugin = {"pretty", // to generate reports
 				"html:target/html/htmlreport.html",
-				"json:target/json/file.json",
+				"json:target/cucumber-reports/CucumberTestReport.json",
+				"rerun:target/failedtestcases.txt"
 		},
 		
 		dryRun=false,	
 		monochrome=true
 		//strict=true,
 		//publish=false
+		
 		)
 
 public class RunnerTest extends Base{
