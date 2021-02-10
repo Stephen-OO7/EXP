@@ -22,7 +22,7 @@ import io.cucumber.junit.CucumberOptions;
 		tags= "@Login ",			
 		plugin = {"pretty", // to generate reports
 				"html:target/html/htmlreport.html",
-				"json:target/cucumber-reports/CucumberTestReport.json",
+				"json:target/cucumber.json",
 				"rerun:target/failedtestcases.txt"
 		},
 		
