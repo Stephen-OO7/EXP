@@ -19,7 +19,7 @@ import io.cucumber.junit.CucumberOptions;
 		//features="E:\\Automation_softwares _and_jar_files\\eclipsee\\PatseerExplorer\\src\\test\\resources\\FeatureFiles",
 		features="classpath:FeatureFiles",
 		glue="StepDefinitionFiles",
-		tags= "",			
+		tags= " ",			
 		plugin = {"pretty", // to generate reports
 				"html:target/html/htmlreport.html",
 				"json:target/cucumber.json",
