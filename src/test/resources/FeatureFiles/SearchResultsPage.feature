@@ -1,6 +1,7 @@
 @Searchresultspage
 Feature:Search results page.
 Background:user is logged in.
+Given user logs in.
 Given user is on quicksearch form.
 When user selects title and abstract field from dropdown and enters "Motor" in the textbox.
 Then user clicks on search button.
@@ -90,7 +91,7 @@ And user selects value from techdomain Type filter.
 And user clicks on apply filter button.
 Then user verifies the appeared results.
 
-@Searchresultspage @filters
+@Searchresultspage @filters @IsNot
 Scenario:Check ISnot for Current_Owner Filter.
 When user expands the Current_Owner type filter.
 And user selects value from Current_Owner Type filter.

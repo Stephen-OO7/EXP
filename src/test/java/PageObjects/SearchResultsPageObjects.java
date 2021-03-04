@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
 
-import Utilities.Base;
+import Utilities.WebdriverFactory;
 
-public class SearchResultsPageObjects extends Base{
+public class SearchResultsPageObjects extends WebdriverFactory{
 
 	WebDriver driver;
 	Actions act=new Actions(Driver());

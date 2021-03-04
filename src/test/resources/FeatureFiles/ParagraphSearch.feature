@@ -2,7 +2,8 @@
 Feature:Check Paragraph Search Form
 
 Background: user is logged in.
-Given user is on Paragraph search form.
+Given user logs in.
+And user is on Paragraph search form.
 
 Scenario:Check searching with paragraph search form.
 When user enters a paragraph "Low cost multi-pole motor constructions and methods of manufacture and Electric sander and motor control therefo and Low cost multi-pole motor constructions and methods of manufacture" in paragraph search.

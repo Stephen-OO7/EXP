@@ -2,6 +2,7 @@ package Utilities;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Base {
+public class WebdriverFactory {
 
 
 	public static WebDriver driver=null;
@@ -35,7 +36,6 @@ public class Base {
 		{
 
 			driver = new ChromeDriver(co);
-			
 
 		}
 		return driver;
@@ -53,6 +53,7 @@ public class Base {
 	    {
 	    	url="https://test1-explr.patseer.com";
 	    }
+	    
 		Driver().get(url);
 		}catch(Exception e)
 		{}
@@ -68,9 +69,15 @@ public class Base {
 
 	}
 
+	public void close()
+	{
+		
+		Driver().quit();
+		driver=null;
+	}
 	public static void main(String args[]) throws InterruptedException
 	{
-		Base b=new Base();
+		WebdriverFactory b=new WebdriverFactory();
 		b.login();
 	}
 

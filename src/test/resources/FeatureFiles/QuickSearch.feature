@@ -2,7 +2,8 @@
 Feature:Check Quicksearch Form
 
 Background: user is logged in.
-Given user is on quicksearch form.
+Given user logs in.
+And user is on quicksearch form.
 
 @Quicksearch @Text
 Scenario:Check searching with Title and Abstract Field

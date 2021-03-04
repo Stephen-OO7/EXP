@@ -9,9 +9,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import Utilities.Base;
+import Utilities.WebdriverFactory;
 
-public class ParagraphSearchObjects extends Base{
+public class ParagraphSearchObjects extends WebdriverFactory{
 	
 WebDriver driver;
 	
@@ -21,7 +21,10 @@ WebDriver driver;
 	
 	public final By paragraphsearchForm=By.xpath("//ul//a[contains(text(),'Paragraph Search')]");
 	
-
+	public ParagraphSearchObjects(WebDriver wd)
+	{
+		this.driver=wd;
+	}
 	
 	public final By paragraphsearchTextbox=By.xpath("//textarea[@id='txtSemanticInput']");
 	public final By paragraphsearchSearchbutton=By.xpath("//button[@id='divAddButton']");

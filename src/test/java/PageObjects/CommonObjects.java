@@ -7,9 +7,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import Utilities.Base;
+import Utilities.WebdriverFactory;
 
-public class CommonObjects extends Base{
+public class CommonObjects extends WebdriverFactory{
 	
 	WebDriver driver;
 	Actions act=new Actions(Driver());

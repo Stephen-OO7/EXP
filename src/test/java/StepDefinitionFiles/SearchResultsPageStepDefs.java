@@ -14,46 +14,49 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import PageObjects.CommonObjects;
 import PageObjects.QuickSearchObjects;
 import PageObjects.SearchResultsPageObjects;
-import Utilities.Base;
+import Utilities.WebdriverFactory;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class SearchResultsPageStepDefs extends Base{
+public class SearchResultsPageStepDefs extends WebdriverFactory{
 
 
 	private static final Logger log = LogManager.getLogger(SearchResultsPageStepDefs.class);
-	Scenario scn;
+	TestContext t1;
+	
+	WebDriverWait wait;
+	Actions act;
+	JavascriptExecutor js;
 	Date dt=new Date();
-	QuickSearchObjects qso=new QuickSearchObjects(Driver());
-	CommonObjects com=new CommonObjects(Driver());
-	SearchResultsPageObjects srpo=new SearchResultsPageObjects(Driver());
-	WebDriverWait wait=new WebDriverWait(Driver(),60);
-	Actions act=new Actions(Driver());
-	JavascriptExecutor js = (JavascriptExecutor) Driver();
+	
+	
 	int filter_recordcount;
 	int mainrecordcount;
 	int counter=0;
 	int countwithoutfilter;
 
-
-	@Before
-	public void setup(Scenario scn) throws InterruptedException
-	{
-
-		this.scn=scn;
-		Driver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-	}
-
+	
+	 public SearchResultsPageStepDefs(TestContext test)
+     {
+    	
+		 
+    	 this.t1=test;
+    	 wait=t1.wait;
+    	 act=t1.act;
+    	 js =t1.js;
+    	 
+     
+     }
 
 
 	@Then("user is on theresults page")
 	public void user_is_on_theresults_page() {
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(srpo.RecordCountSearchResultPage));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(t1.srpo.RecordCountSearchResultPage));
 
-		if(Driver().findElement(srpo.firstrecordcheckboxSearchResultsPage).isDisplayed())
+		if(t1.driver.findElement(t1.srpo.firstrecordcheckboxSearchResultsPage).isDisplayed())
 		{
 
 			//Assert.assertTrue(true);
@@ -70,22 +73,22 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user expands the Record type filter.")
 	public void user_expands_the_record_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.recordTypeFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.recordTypeFilterSearchResultsPage);
 
 	}
 
 	@When("user selects value from Record Type filter.")
 	public void user_selects_value_from_record_type_filter() {
 
-		srpo.click_on_element(srpo.recordTypeFilterfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.recordTypeFilterfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.recordTypeFilterfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.recordTypeFilterfirstvalue);
 	}
 
 
 	@When("user clicks on apply filter button.")
 	public void user_clicks_on_apply_filter_button() {
 
-		srpo.click_on_element(srpo.applyfilterbuttonSearchResultsPage);
+		t1.srpo.click_on_element(t1.srpo.applyfilterbuttonSearchResultsPage);
 
 
 
@@ -93,7 +96,7 @@ public class SearchResultsPageStepDefs extends Base{
 	@Then("user verifies the appeared results.")
 	public void user_verifies_the_appeared_results() throws InterruptedException {
 		Thread.sleep(500);
-		mainrecordcount=srpo.getRecordCount();
+		mainrecordcount=t1.srpo.getRecordCount();
 
 		if(counter!=1)
 		{
@@ -125,7 +128,7 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user expands the Assigne type filter.")
 	public void user_expands_the_assigne_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.assigneeFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.assigneeFilterSearchResultsPage);
 
 
 	}
@@ -133,14 +136,14 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from Assigne Type filter.")
 	public void user_selects_value_from_Asn_type_filter() {
 
-		srpo.click_on_element(srpo.assigneeFilterfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.assigneeFilterfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.assigneeFilterfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.assigneeFilterfirstvalue);
 	}
 
 	@When("user expands the Attorny type filter.")
 	public void user_expands_the_Attorny_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.attornyFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.attornyFilterSearchResultsPage);
 
 
 	}
@@ -148,15 +151,15 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from Attorny Type filter.")
 	public void user_selects_value_from_Attorny_type_filter() {
 
-		srpo.click_on_element(srpo.attornyfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.attornyfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.attornyfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.attornyfirstvalue);
 	}
 
 
 	@When("user expands the Inventor type filter.")
 	public void user_expands_the_inventor_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.inventorFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.inventorFilterSearchResultsPage);
 
 
 	}
@@ -165,8 +168,8 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from Inventor Type filter.")
 	public void user_selects_value_from_inventor_type_filter() {
 
-		srpo.click_on_element(srpo.inventorFilterfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.inventorFilterfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.inventorFilterfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.inventorFilterfirstvalue);
 
 	}
 
@@ -174,7 +177,7 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user expands the IPC type filter.")
 	public void user_expands_the_ipc_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.IPCFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.IPCFilterSearchResultsPage);
 
 
 	}
@@ -184,15 +187,15 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from IPC Type filter.")
 	public void user_selects_value_from_ipc_type_filter() {
 
-		srpo.click_on_element(srpo.IPCFilterfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.IPCFilterfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.IPCFilterfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.IPCFilterfirstvalue);
 
 	}
 
 	@When("user expands the Publication_Country type filter.")
 	public void user_expands_the_publication_country_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.pubcountryFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.pubcountryFilterSearchResultsPage);
 
 	}
 
@@ -200,8 +203,8 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from Publication_Country Type filter.")
 	public void user_selects_value_from_publication_country_type_filter() {
 
-		srpo.click_on_element(srpo.pubcountryfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.pubcountryfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.pubcountryfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.pubcountryfirstvalue);
 
 
 	}
@@ -209,7 +212,7 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user expands the Industry type filter.")
 	public void user_expands_the_industry_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.industryFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.industryFilterSearchResultsPage);
 
 
 
@@ -219,15 +222,15 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from Industry Type filter.")
 	public void user_selects_value_from_industry_type_filter() {
 
-		srpo.click_on_element(srpo.industryfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.industryrfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.industryfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.industryrfirstvalue);
 
 	}
 
 	@When("user expands the Legal_Status_Current type filter.")
 	public void user_expands_the_legal_status_current_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.leagalstatusFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.leagalstatusFilterSearchResultsPage);
 
 
 	}
@@ -237,15 +240,15 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from Legal_Status_Current Type filter.")
 	public void user_selects_value_from_legal_status_current_type_filter() {
 
-		srpo.click_on_element(srpo.leagalstatusrfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.leagalstatusrfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.leagalstatusrfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.leagalstatusrfirstvalue);
 
 	}
 
 	@When("user expands the Current_Owner type filter.")
 	public void user_expands_the_current_owner_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.currentownerFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.currentownerFilterSearchResultsPage);
 
 
 	}
@@ -253,14 +256,14 @@ public class SearchResultsPageStepDefs extends Base{
 
 	@When("user selects value from Current_Owner Type filter.")
 	public void user_selects_value_from_current_owner_type_filter() {
-		srpo.click_on_element(srpo.currentownerfilterfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.currentownerfilterfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.currentownerfilterfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.currentownerfilterfirstvalue);
 
 
 	}
 	@When("user expands the CPC type filter.")
 	public void user_expands_the_cpc_type_filter() {
-		srpo.expandFilterOnResultsPage(srpo.CPCFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.CPCFilterSearchResultsPage);
 
 
 	}
@@ -271,8 +274,8 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from CPC Type filter.")
 	public void user_selects_value_from_cpc_type_filter() {
 
-		srpo.click_on_element(srpo.CPCFilterfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.CPCFilterfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.CPCFilterfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.CPCFilterfirstvalue);
 
 
 	}
@@ -280,7 +283,7 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user expands the Priority_Country type filter.")
 	public void user_expands_the_priority_country_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.prioritycountryFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.prioritycountryFilterSearchResultsPage);
 
 
 	}
@@ -289,8 +292,8 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from Priority_Country Type filter.")
 	public void user_selects_value_from_priority_country_type_filter() {
 
-		srpo.click_on_element(srpo.prioritycountyrfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.prioritycountyrfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.prioritycountyrfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.prioritycountyrfirstvalue);
 
 
 
@@ -300,7 +303,7 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user expands the techdomain type filter.")
 	public void user_expands_the_techdomain_type_filter() {
 
-		srpo.expandFilterOnResultsPage(srpo.techDomainFilterSearchResultsPage);
+		t1.srpo.expandFilterOnResultsPage(t1.srpo.techDomainFilterSearchResultsPage);
 
 
 	}
@@ -308,31 +311,31 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user selects value from techdomain Type filter.")
 	public void user_selects_value_from_techdomain_type_filter() {
 
-		srpo.click_on_element(srpo.techDomainfirstcheckbox);
-		filter_recordcount=srpo.getselectedFilterRecordCount(srpo.techDomainfirstvalue);
+		t1.srpo.click_on_element(t1.srpo.techDomainfirstcheckbox);
+		filter_recordcount=t1.srpo.getselectedFilterRecordCount(t1.srpo.techDomainfirstvalue);
 
 
 	}
 
 	@When("user selects ISNOT in filter.")
 	public void user_selects_isnot_in_filter() throws InterruptedException {
-		srpo.selectISNOT();
+		t1.srpo.selectISNOT();
 		counter=1;
-		countwithoutfilter=srpo.getRecordCount();
+		countwithoutfilter=t1.srpo.getRecordCount();
 	}
 
 	@When("user changes the view to compact view")
 	public void user_changes_the_view_to_compact_view() {
 		
-		srpo.changeview(srpo.compactviewSearchResultsPage);
+		t1.srpo.changeview(t1.srpo.compactviewSearchResultsPage);
 
 	}
 
 
 	@Then("user verifies that the compact view is loaded properly.")
 	public void user_verifies_that_the_compact_view_is_loaded_properly() {
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(srpo.abstractSearchResultsPage));
-		if(!Driver().findElement(srpo.abstractSearchResultsPage).isDisplayed())
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(t1.srpo.abstractSearchResultsPage));
+		if(!t1.driver.findElement(t1.srpo.abstractSearchResultsPage).isDisplayed())
 		{
 			Assert.fail("Abstract not loaded in the compact view");
 		}
@@ -341,15 +344,15 @@ public class SearchResultsPageStepDefs extends Base{
 	@When("user changes the view to tabular view")
 	public void user_changes_the_view_to_tabular_view() {
 		
-		srpo.changeview(srpo.tabularviewSearchResultsPage);
+		t1.srpo.changeview(t1.srpo.tabularviewSearchResultsPage);
 		
 	}
 
 
 	@Then("user verifies that the tabular view is loaded properly.")
 	public void user_verifies_that_the_tabular_view_is_loaded_properly() {
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(srpo.titleSearchResultsPage));
-		if(!Driver().findElement(srpo.titleSearchResultsPage).isDisplayed())
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(t1.srpo.titleSearchResultsPage));
+		if(!t1.driver.findElement(t1.srpo.titleSearchResultsPage).isDisplayed())
 		{
 			Assert.fail("Abstract not loaded in the title view");
 		}

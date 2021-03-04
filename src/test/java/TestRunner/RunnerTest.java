@@ -8,7 +8,7 @@ import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import Utilities.Base;
+import Utilities.WebdriverFactory;
 import io.cucumber.java.Scenario;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -19,25 +19,25 @@ import io.cucumber.junit.CucumberOptions;
 		
 		features="classpath:FeatureFiles",
 		glue="StepDefinitionFiles",
-		tags= "",			
-		plugin = {"pretty", // to generate reports
+		tags= "@Quicksearch",			
+		plugin = {"pretty", 
 				"html:target/html/htmlreport.html",
 				"json:target/cucumber.json",
 				"rerun:target/failedtestcases.txt"
 		},
 		
-		dryRun=true,	
-		monochrome=true,
-		strict=true
+		dryRun=false,	
+		monochrome=true
+		
 		
 		
 		)
 
-public class RunnerTest extends Base{
+public class RunnerTest extends WebdriverFactory{
 	@AfterClass
 	 public static void writeExtentReport() {
 		
-		//Driver().quit();
+		
 		
 		
 	}
