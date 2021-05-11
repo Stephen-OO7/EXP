@@ -27,7 +27,8 @@ import io.cucumber.junit.CucumberOptions;
 		},
 		
 		dryRun=false,	
-		monochrome=true
+		monochrome=true,
+		publish=true
 		
 		
 		

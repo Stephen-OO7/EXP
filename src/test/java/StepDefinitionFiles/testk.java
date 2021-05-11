@@ -1,54 +1,35 @@
 package StepDefinitionFiles;
 
-import java.util.HashMap;
+
 import java.util.Map;
 
 import javax.print.attribute.HashAttributeSet;
 
 public class testk {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 	
-		Map<Integer,String> m=new HashMap<Integer,String>();
+
+	public static void main(String[] args) 
+	{
 		
-		m.put(1, "value 1");
-		m.put(2, "value 2");
-		m.put(3, "vakue 3");
+	String str1="Bad boy Boy good bAd boy";
+	String arr[]=str1.split(" ");
+for(int i=0;i<arr.length;i++)
+{
+	
+
+	for(int j=i+1;j<=arr.length-1;j++)
+	{
+		String str3=arr[i].toLowerCase();
+		String str4=arr[j].toLowerCase();
 		
-		
-		
-		for(Map.Entry<Integer,String> j:m.entrySet())
-		{
-			if(j.getKey()==2)
-			{
-			
-				System.out.println(m.get(2));
-			}
-			
-		}
-				
-				for(int k:m.keySet())
-				{
-					
-					if(k==2)
-					{
-						
-						System.out.println(m.get(1));
-					}
-				}
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			
-			
-		
+	if(str3.equals(str4))
+	{
+		System.out.println(arr[i]);
+	}
+	
+}
+}
+
 	}
 	}
 
